@@ -48,7 +48,8 @@ jobs:
          run: |
                cd /work
                sudo ./tools/proprietary-files.sh dump
-               sudo ./helpers/extract_blobs/extract-files.sh dump
+               export GIT_TOKEN=696969696969
+               sudo ./tools/vendor_tree.sh dump
        
        - name: Upload tard DT
          run: |
