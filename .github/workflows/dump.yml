@@ -28,6 +28,7 @@ jobs:
          run: |
               cd /work
               sudo git clone https://github.com/ShivamKumarJha/android_tools .
+              sudo apt-get install -y python-pip python3-pip python
               sudo ./setup.sh
        
        - name: Clone dump
