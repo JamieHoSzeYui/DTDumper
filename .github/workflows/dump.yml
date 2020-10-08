@@ -1,0 +1,47 @@
+name: Extract DT
+
+on: [push]
+
+env:
+  DUMP: https://git.rip/dumps/redmi/galahad.git
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+
+       - name: Set up python
+         uses: actions/setup-python@v2
+         with:
+           python-version: '3.8.2'
+
+       - name: Initializing environment
+         run: |
+              cd /
+              sudo mkdir work
+              sudo chmod -R 0777 work
+              cd work
+              
+       - name: Clone scripts
+         run: |
+              cd /work
+              sudo git clone https://github.com/ShivamKumarJha/android_tools .
+              sudo ./setup.sh
+       
+       - name: Clone dump
+         run: |
+              cd /work
+              git clone --depth=1 -j8 --single-branch $DUMP dump
+              
+       - name: Generate DT
+         run: |
+              cd /work
+              sudo ./tools/dummy_dt.sh dump
+       
+       - name: Lemme see wats happening
+         run: |
+              cd /work
+              ls *
+              
