@@ -47,7 +47,7 @@ jobs:
          run: |
                cd /work
                sudo ./tools/proprietary-files.sh dump
-               sudo ./tools/vendor_tree.sh dump
+               sudo bash helpers/extract_blobs/extract-files.sh dump
        
        - name: Upload tard DT
          run: |
