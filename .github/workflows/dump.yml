@@ -44,10 +44,11 @@ jobs:
               sudo ./tools/dummy_dt.sh dump
               
        - name: Generate Vendor tree
+         continue-on-error: true
          run: |
                cd /work
                sudo ./tools/proprietary-files.sh dump
-               sudo bash helpers/extract_blobs/extract-files.sh dump
+               sudo ./helpers/extract_blobs/extract-files.sh dump
        
        - name: Upload tard DT
          run: |
