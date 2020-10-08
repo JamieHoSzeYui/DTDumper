@@ -46,7 +46,8 @@ jobs:
        - name: Upload tard DT
          run: |
               cd /work
-              sudo zip -r $CODENAME.zip dummy_dt
+              rm -rf dummy_dt/working
+              sudo zip -r $CODENAME.zip dummy_dt/*
               touch link.txt
               curl -sL https://git.io/file-transfer | sh
               ./transfer wet $CODENAME.zip | grep Download >> link.txt       
