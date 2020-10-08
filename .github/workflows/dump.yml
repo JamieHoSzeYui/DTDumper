@@ -4,7 +4,7 @@ on: [push]
 
 env:
   DUMP: https://git.rip/dumps/redmi/galahad.git
-  BRAND: xiaomi
+  CODENAME: lancelot
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,10 +46,10 @@ jobs:
        - name: Upload tard DT
          run: |
               cd /work
-              sudo zip -r $BRAND.zip $BRAND
+              sudo zip -r $CODENAME.zip dummy_dt
               touch link.txt
               curl -sL https://git.io/file-transfer | sh
-              ./transfer wet $BRAND.zip | grep Download >> link.txt       
+              ./transfer wet $CODENAME.zip | grep Download >> link.txt       
               
        - name: Get DL link
          run: cat /work/link.txt
