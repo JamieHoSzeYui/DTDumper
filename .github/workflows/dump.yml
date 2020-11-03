@@ -43,13 +43,6 @@ jobs:
               cd /work
               sudo ./tools/dummy_dt.sh dump
               
-       - name: Generate Vendor tree
-         continue-on-error: true
-         run: |
-               cd /work
-               sudo ./tools/proprietary-files.sh dump
-               export GIT_TOKEN=696969696969
-               sudo ./tools/vendor_tree.sh dump
        
        - name: Upload tard DT
          run: |
